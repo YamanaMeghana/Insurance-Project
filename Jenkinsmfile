@@ -41,6 +41,7 @@ stage('Create Image using the package') {
        steps {
           sh 'docker push meghanayamana/insurance:1.0'
               }
-        }
-    }
+            }
+     }
+    
 }
