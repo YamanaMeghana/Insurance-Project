@@ -30,18 +30,17 @@ stage('Create Image using the package') {
               }
         }
  stage('Docker Login') {
-       steps {
-          echo 'Login to Docker hub to push the images'
-         withCredentials([usernamePassword(credentialsId: 'Dockerlogin-user', passwordVariable: 'Dockerpassword', usernameVariable: 'Dockeruser')]) {
-          sh 'docker login -u ${Dockerlogin} -p ${Dockerpassword}'
-                                             }
-                      }
+            steps {
+                echo 'Login to Docker hub to push the images'
+                withCredentials([usernamePassword(credentialsId: 'Dockerlogin-user', passwordVariable: 'Dockerpassword', usernameVariable: 'Dockeruser')]) {
+                    sh 'docker login -u ${Dockeruser} -p ${Dockerpassword}' // Corrected variable name
+                }
+            }
         }
-    stage('Push the Image') {
-       steps {
-          sh 'docker push meghanayamana/insurance:1.0'
-              }
-         }
-     }
-    
+        stage('Push the Image') {
+            steps {
+                sh 'docker push meghanayamana/insurance:1.0'
+            }
+        }
+    }
 }
