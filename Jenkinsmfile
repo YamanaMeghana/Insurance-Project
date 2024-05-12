@@ -35,12 +35,13 @@ stage('Create Image using the package') {
          withCredentials([usernamePassword(credentialsId: 'Dockerlogin-user', passwordVariable: 'Dockerpassword', usernameVariable: 'Dockeruser')]) {
           sh 'docker login -u ${Dockerlogin} -p ${Dockerpassword}'
                                              }
-                          }
+                      }
         }
     stage('Push the Image') {
        steps {
           sh 'docker push meghanayamana/insurance:1.0'
                             }
-             }
-     }
+            }
+        }
+    }
 }
