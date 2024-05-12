@@ -9,7 +9,7 @@ pipeline {
     stage('Checkout') {
       steps {
         echo 'Checkout the source code from GitHub'
-        git branch: 'main', url: 'https://github.com/challadevops1/InsureProject-03May-24.git'
+        git branch: 'main', url: 'https://github.com/YamanaMeghana/Insurance-Project.git'
             }
     }
     stage('Package') {
