@@ -29,5 +29,17 @@ stage('Create Image using the package') {
          sh 'docker build -t meghanayamana/insurance:1.0 .'
               }
         }
-    }
+ stage('Docker Login') {
+       steps {
+          echo 'Login to Docker hub to push the images'
+         withCredentials([usernamePassword(credentialsId: 'Dockerlogin-user', passwordVariable: 'Dockerpassword', usernameVariable: 'Dockeruser')]) {
+          sh 'docker login -u ${Dockerlogin} -p ${Dockerpassword}'
+              }
+         }
+    stage('Push the Image') {
+       steps {
+          sh 'docker push meghanayamana/insurance:1.0'
+              }
+          }
+     }
 }
